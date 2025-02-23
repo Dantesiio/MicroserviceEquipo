@@ -1,4 +1,4 @@
-package co.analisys.gimnasio.service;
+package co.analisys.gimnasio.service.interfaces;
 
 import co.analisys.gimnasio.dto.EquipoDTO;
 import java.util.List;

@@ -1,7 +1,7 @@
 package co.analisys.gimnasio.controller;
 
 import co.analisys.gimnasio.dto.EquipoDTO;
-import co.analisys.gimnasio.service.IServiceEquipo;
+import co.analisys.gimnasio.service.interfaces.IServiceEquipo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

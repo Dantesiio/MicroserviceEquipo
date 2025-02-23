@@ -4,7 +4,7 @@ import co.analisys.gimnasio.dto.EquipoDTO;
 import co.analisys.gimnasio.model.Equipo;
 import co.analisys.gimnasio.model.EquipoId;
 import co.analisys.gimnasio.repository.EquipoRepository;
-import co.analisys.gimnasio.service.IServiceEquipo;
+import co.analisys.gimnasio.service.interfaces.IServiceEquipo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

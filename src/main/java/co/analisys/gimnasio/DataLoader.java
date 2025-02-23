@@ -1,7 +1,7 @@
 package co.analisys.gimnasio.loader;
 
 import co.analisys.gimnasio.dto.EquipoDTO;
-import co.analisys.gimnasio.service.IServiceEquipo;
+import co.analisys.gimnasio.service.interfaces.IServiceEquipo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
 package co.analisys.gimnasio.controller;
 
-import co.analisys.gimnasio.model.Equipo;
-import co.analisys.gimnasio.service.*;
+import co.analisys.gimnasio.dto.EquipoDTO;
+import co.analisys.gimnasio.service.IServiceEquipo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,17 +9,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/equipos")
-class EquipoController {
+public class EquipoController {
+
     @Autowired
-    private EquipoService equipoService;
+    private IServiceEquipo equipoService;
 
     @GetMapping
-    public List<Equipo> getAllEquipos() {
+    public List<EquipoDTO> getAllEquipos() {
         return equipoService.getAllEquipos();
     }
 
     @PostMapping
-    public Equipo createEquipo(@RequestBody Equipo equipo) {
-        return equipoService.createEquipo(equipo);
+    public EquipoDTO createEquipo(@RequestBody EquipoDTO equipoDTO) {
+        return equipoService.createEquipo(equipoDTO);
     }
 }

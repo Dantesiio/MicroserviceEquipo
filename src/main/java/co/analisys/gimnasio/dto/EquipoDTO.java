@@ -1,18 +1,17 @@
-package co.analisys.gimnasio.model;
+package co.analisys.gimnasio.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
-public class Equipo {
-    @EmbeddedId
-    private EquipoId id;
+@AllArgsConstructor
+public class EquipoDTO {
+    private String equipoId;
     private String nombre;
     private String descripcion;
     private int cantidad;
+
+
 }

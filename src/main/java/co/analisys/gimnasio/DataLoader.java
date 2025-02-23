@@ -1,9 +1,7 @@
-package co.analisys.gimnasio;
+package co.analisys.gimnasio.loader;
 
-
-
-import co.analisys.gimnasio.model.Equipo;
-import co.analisys.gimnasio.repository.EquipoRepository;
+import co.analisys.gimnasio.dto.EquipoDTO;
+import co.analisys.gimnasio.service.IServiceEquipo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,15 +10,24 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements CommandLineRunner {
 
     @Autowired
-    private EquipoRepository equipoRepository;
+    private IServiceEquipo equipoService;
 
     @Override
     public void run(String... args) throws Exception {
-        equipoRepository.save(new Equipo(1, "Mancuerna 10kg", "Par de mancuernas", 10));
-        equipoRepository.save(new Equipo(2, "Bicicleta Estática", "Bicicleta para cardio", 5));
-        equipoRepository.save(new Equipo(3, "Cuerda para saltar", "Cuerda de velocidad", 15));
+        loadData();
+    }
 
-        System.out.println("Datos de prueba cargados exitosamente.");
+    private void loadData() {
+        // Crear equipos de ejemplo (equipoDTO)
+        EquipoDTO equipo1 = new EquipoDTO("E001", "Treadmill", "Cardio",2);
+        EquipoDTO equipo2 = new EquipoDTO("E002", "Dumbbells", "Strength",3);
+        EquipoDTO equipo3 = new EquipoDTO("E003", "Yoga Mat", "Flexibility",4);
 
+        // Guardar los equipos en la base de datos
+        equipoService.createEquipo(equipo1);
+        equipoService.createEquipo(equipo2);
+        equipoService.createEquipo(equipo3);
+
+        System.out.println("Datos cargados correctamente en la base de datos.");
     }
 }

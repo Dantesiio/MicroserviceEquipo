@@ -1,4 +1,4 @@
-package co.analisys.gimnasio.loader;
+package co.analisys.gimnasio;
 
 import co.analisys.gimnasio.dto.EquipoDTO;
 import co.analisys.gimnasio.service.interfaces.IServiceEquipo;

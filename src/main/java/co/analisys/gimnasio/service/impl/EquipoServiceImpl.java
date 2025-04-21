@@ -5,6 +5,7 @@ import co.analisys.gimnasio.model.Equipo;
 import co.analisys.gimnasio.model.EquipoId;
 import co.analisys.gimnasio.repository.EquipoRepository;
 import co.analisys.gimnasio.service.interfaces.IServiceEquipo;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class EquipoServiceImpl implements IServiceEquipo {
 
     @Autowired
     private EquipoRepository equipoRepository;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @Override
     public List<EquipoDTO> getAllEquipos() {
@@ -29,6 +33,14 @@ public class EquipoServiceImpl implements IServiceEquipo {
     public EquipoDTO createEquipo(EquipoDTO equipoDTO) {
         Equipo equipo = convertToEntity(equipoDTO);
         equipo = equipoRepository.save(equipo);
+
+        // 📨 Enviar mensaje a RabbitMQ
+        rabbitTemplate.convertAndSend(
+                "gimnasio.exchange",
+                "equipo.nuevo",
+                equipoDTO
+        );
+
         return convertToDTO(equipo);
     }
 
